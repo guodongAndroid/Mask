@@ -12,21 +12,21 @@ Used to hide Java/Kotlin methods or construction methods in the SDK.
 
 ```groovy
 buildscript {
-	repositories {
-		maven {
-			url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
-		}
+    repositories {
+	maven {
+	    url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
 	}
-	dependencies {
-		classpath "com.guodong.android:mask-gradle-plugin:${version}"
-	}
+    }
+    dependencies {
+	classpath "com.guodong.android:mask-gradle-plugin:${version}"
+    }
 }
 
 allprojects {
     repositories {
     	maven {
-			url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
-		}
+	    url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
+	}
     }
 }
 ```
@@ -39,8 +39,8 @@ plugins {
 }
 
 dependencies {
-	implementation "com.guodong.android:mask-api:${version}" // java
-	implementation "com.guodong.android:mask-api-kt:${version}" // kotlin
+    implementation "com.guodong.android:mask-api:${version}" // java
+    implementation "com.guodong.android:mask-api-kt:${version}" // kotlin
 }
 ```
 
