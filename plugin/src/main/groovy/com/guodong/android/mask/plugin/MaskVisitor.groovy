@@ -1,0 +1,115 @@
+package com.guodong.android.mask.plugin
+
+
+import org.gradle.api.Project
+import org.objectweb.asm.ClassVisitor
+import org.objectweb.asm.FieldVisitor
+import org.objectweb.asm.MethodVisitor
+import org.objectweb.asm.Opcodes
+import org.objectweb.asm.tree.FieldNode
+import org.objectweb.asm.tree.MethodNode
+
+/**
+ * Created by guodongAndroid on 2021/12/29.
+ */
+class MaskVisitor extends ClassVisitor {
+
+    private static final String HIDE_JAVA_DESCRIPTOR = "Lcom/guodong/android/mask/api/Hide;"
+    private static final String HIDE_KOTLIN_DESCRIPTOR = "Lcom/guodong/android/mask/api/kt/Hide;"
+
+    private static final Set<String> HIDE_DESCRIPTOR_SET = new HashSet<>()
+
+    static {
+        HIDE_DESCRIPTOR_SET.add(HIDE_JAVA_DESCRIPTOR)
+        HIDE_DESCRIPTOR_SET.add(HIDE_KOTLIN_DESCRIPTOR)
+    }
+
+    private final Project project
+
+    MaskVisitor(int api, ClassVisitor classVisitor, Project project) {
+        super(api, classVisitor)
+        this.project = project
+    }
+
+    @Override
+    FieldVisitor visitField(int access, String name, String descriptor, String signature, Object value) {
+        return new HideFieldNode(api, access, name, descriptor, signature, value, project, cv)
+    }
+
+    @Override
+    MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
+        return new HideMethodNode(api, access, name, descriptor, signature, exceptions, project, cv)
+    }
+
+    private static class HideMethodNode extends MethodNode {
+
+        private static final String TAG = HideMethodNode.class.simpleName
+
+        private final Project project
+        private final ClassVisitor cv
+
+        HideMethodNode(int api, int access, String name, String descriptor, String signature,
+                       String[] exceptions, Project project, ClassVisitor cv) {
+            super(api, access, name, descriptor, signature, exceptions)
+            this.project = project
+            this.cv = cv
+        }
+
+        @Override
+        void visitEnd() {
+
+            if (invisibleAnnotations != null) {
+                for (node in invisibleAnnotations) {
+                    if (HIDE_DESCRIPTOR_SET.contains(node.desc)) {
+                        project.logger.error("$TAG, before --> methodName = $name, access = $access")
+                        access += Opcodes.ACC_SYNTHETIC
+                        project.logger.error("$TAG, after --> methodName = $name, access = $access")
+                        break
+                    }
+                }
+            }
+
+            if (cv != null) {
+                accept(cv)
+            }
+
+            super.visitEnd()
+        }
+    }
+
+    private static class HideFieldNode extends FieldNode {
+
+        private static final String TAG = HideFieldNode.class.simpleName
+
+        private final Project project
+        private final ClassVisitor cv
+
+        HideFieldNode(int api, int access, String name, String descriptor, String signature,
+                      Object value, Project project, ClassVisitor cv) {
+            super(api, access, name, descriptor, signature, value)
+            this.project = project
+            this.cv = cv
+        }
+
+        @Override
+        void visitEnd() {
+
+            if (invisibleAnnotations != null) {
+                for (node in invisibleAnnotations) {
+                    if (HIDE_DESCRIPTOR_SET.contains(node.desc)) {
+                        project.logger.error("$TAG, before --> fieldName = $name, access = $access")
+                        access += Opcodes.ACC_SYNTHETIC
+                        project.logger.error("$TAG, after --> fieldName = $name, access = $access")
+                        break
+                    }
+                }
+            }
+
+            if (cv != null) {
+                accept(cv)
+            }
+
+            super.visitEnd()
+        }
+    }
+}
