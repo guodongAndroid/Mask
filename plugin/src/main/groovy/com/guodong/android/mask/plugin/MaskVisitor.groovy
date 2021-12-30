@@ -33,22 +33,22 @@ class MaskVisitor extends ClassVisitor {
 
     @Override
     FieldVisitor visitField(int access, String name, String descriptor, String signature, Object value) {
-        return new HideFieldNode(api, access, name, descriptor, signature, value, project, cv)
+        return new MaskFieldNode(api, access, name, descriptor, signature, value, project, cv)
     }
 
     @Override
     MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-        return new HideMethodNode(api, access, name, descriptor, signature, exceptions, project, cv)
+        return new MaskMethodNode(api, access, name, descriptor, signature, exceptions, project, cv)
     }
 
-    private static class HideMethodNode extends MethodNode {
+    private static class MaskMethodNode extends MethodNode {
 
-        private static final String TAG = HideMethodNode.class.simpleName
+        private static final String TAG = MaskMethodNode.class.simpleName
 
         private final Project project
         private final ClassVisitor cv
 
-        HideMethodNode(int api, int access, String name, String descriptor, String signature,
+        MaskMethodNode(int api, int access, String name, String descriptor, String signature,
                        String[] exceptions, Project project, ClassVisitor cv) {
             super(api, access, name, descriptor, signature, exceptions)
             this.project = project
@@ -69,22 +69,22 @@ class MaskVisitor extends ClassVisitor {
                 }
             }
 
+            super.visitEnd()
+
             if (cv != null) {
                 accept(cv)
             }
-
-            super.visitEnd()
         }
     }
 
-    private static class HideFieldNode extends FieldNode {
+    private static class MaskFieldNode extends FieldNode {
 
-        private static final String TAG = HideFieldNode.class.simpleName
+        private static final String TAG = MaskFieldNode.class.simpleName
 
         private final Project project
         private final ClassVisitor cv
 
-        HideFieldNode(int api, int access, String name, String descriptor, String signature,
+        MaskFieldNode(int api, int access, String name, String descriptor, String signature,
                       Object value, Project project, ClassVisitor cv) {
             super(api, access, name, descriptor, signature, value)
             this.project = project
@@ -105,11 +105,11 @@ class MaskVisitor extends ClassVisitor {
                 }
             }
 
+            super.visitEnd()
+
             if (cv != null) {
                 accept(cv)
             }
-
-            super.visitEnd()
         }
     }
 }

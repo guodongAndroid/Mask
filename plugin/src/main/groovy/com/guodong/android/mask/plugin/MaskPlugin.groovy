@@ -11,7 +11,7 @@ class MaskPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-        project.logger.error("Welcome to guodongAndroid hide plugin.")
+        project.logger.error("Welcome to guodongAndroid mask plugin.")
 
         LibraryExtension extension = project.extensions.findByType(LibraryExtension)
         if (extension == null) {
