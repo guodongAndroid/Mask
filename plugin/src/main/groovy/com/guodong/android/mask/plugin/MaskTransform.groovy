@@ -61,7 +61,7 @@ class MaskTransform extends Transform {
                             ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS)
                             ClassVisitor cv = new CheckClassAdapter(cw)
                             cv = new MaskVisitor(Opcodes.ASM9, cv, mProject)
-                            int parsingOptions = ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES
+                            int parsingOptions = /*ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES*/ 0
                             cr.accept(cv, parsingOptions)
                             byte[] bytes = cw.toByteArray()
 
