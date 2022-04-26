@@ -6,7 +6,7 @@ Used to hide Java/Kotlin methods or construction methods in the SDK.
 
 ## 集成
 
-`def version = 0.0.3`
+`def version = 0.0.4`
 
 ### Project level build.gradle
 
@@ -15,6 +15,8 @@ buildscript {
     repositories {
 	maven {
 	    url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
+        or
+        url "https://gitee.com/guodongAndroid/maven/raw/main/repository/"
 	}
     }
     dependencies {
