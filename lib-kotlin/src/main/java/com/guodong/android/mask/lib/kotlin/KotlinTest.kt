@@ -6,7 +6,7 @@ import com.guodong.android.mask.lib.kotlin.databinding.LayoutKotlinTestBinding
 /**
  * Created by guodongAndroid on 2021/12/29.
  */
-class KotlinTest(a: Int) {
+class KotlinTest(a: Int) : InterfaceTest {
 
     @Hide
     constructor() : this(-2)
@@ -29,5 +29,9 @@ class KotlinTest(a: Int) {
 
     fun test() {
         a = 1000
+    }
+
+    override fun testInterface() {
+        println("Interface function test")
     }
 }

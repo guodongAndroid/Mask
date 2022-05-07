@@ -35,10 +35,11 @@ class MaskClassBuilder(
         signature: String?,
         value: Any?
     ): FieldVisitor {
-        val original = super.newField(origin, access, name, desc, signature, value)
-        val field = origin.descriptor as? FieldDescriptor ?: return original
+        val field = origin.descriptor as? FieldDescriptor
+            ?: return super.newField(origin, access, name, desc, signature, value)
+
         if (annotations.none { field.annotations.hasAnnotation(it) }) {
-            return original
+            return super.newField(origin, access, name, desc, signature, value)
         }
 
         messageCollector.report(
@@ -64,10 +65,11 @@ class MaskClassBuilder(
         signature: String?,
         exceptions: Array<out String>?
     ): MethodVisitor {
-        val original = super.newMethod(origin, access, name, desc, signature, exceptions)
-        val function = origin.descriptor as? FunctionDescriptor ?: return original
+        val function = origin.descriptor as? FunctionDescriptor
+            ?: return super.newMethod(origin, access, name, desc, signature, exceptions)
+
         if (annotations.none { function.annotations.hasAnnotation(it) }) {
-            return original
+            return super.newMethod(origin, access, name, desc, signature, exceptions)
         }
 
         messageCollector.report(
