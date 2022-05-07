@@ -6,7 +6,7 @@ Used to hide Java/Kotlin methods or construction methods in the SDK.
 
 ## 集成
 
-`def version = 0.0.5`
+`def version = 0.0.6`
 
 有两个版本：
 
