@@ -6,29 +6,42 @@ Used to hide Java/Kotlin methods or construction methods in the SDK.
 
 ## 集成
 
-`def version = 0.0.4`
+`def version = 0.0.5`
+
+有两个版本：
+
+1. AGP + Transform - 适用Kotlin/Java
+2. Kotlin Compiler Plugin - 仅适用于Kotlin - **0.0.5及以上版本**
+
+Kotlin项目使用KCP比使用Transform编译会稍微快一些**(没有进行过具体测试，仅是个人直觉)**
 
 ### Project level build.gradle
 
 ```groovy
 buildscript {
     repositories {
-	maven {
-	    url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
-        or
-        url "https://gitee.com/guodongAndroid/maven/raw/main/repository/"
-	}
+        maven {
+            // 1.Github
+            url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
+            
+            // 2.Gitee
+            url "https://gitee.com/guodongAndroid/maven/raw/main/repository/"
+        }
     }
     dependencies {
-	classpath "com.guodong.android:mask-gradle-plugin:${version}"
+        // 1.AGP + Transform - 适用Kotlin/Java
+        classpath "com.guodong.android:mask-gradle-plugin:${version}"
+        
+        // 2.Kotlin Compiler Plugin - 仅适用于Kotlin
+        classpath "com.guodong.android:mask-kcp-gradle-plugin:${version}"
     }
 }
 
 allprojects {
     repositories {
-    	maven {
-	    url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
-	}
+        maven {
+            url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
+        }
     }
 }
 ```
@@ -37,7 +50,8 @@ allprojects {
 
 ```groovy
 plugins {
-    id 'com.guodong.android.mask'
+    id 'com.guodong.android.mask' // AGP + Transform - 适用Kotlin/Java
+    id 'com.guodong.android.mask.kcp' // KCP - 仅适用于Kotlin
 }
 
 dependencies {
