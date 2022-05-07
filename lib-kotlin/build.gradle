@@ -3,7 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'maven-publish'
-    id 'com.guodong.android.mask'
+//    id 'com.guodong.android.mask' // use kcp
+    id 'com.guodong.android.mask.kcp'
 }
 
 android {
