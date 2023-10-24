@@ -5,7 +5,7 @@ plugins {
     id("java-gradle-plugin")
     kotlin("jvm")
     id("com.github.gmazzo.buildconfig")
-    `maven-publish`
+//    `maven-publish`
 }
 
 dependencies {
@@ -21,6 +21,8 @@ buildConfig {
 }
 
 gradlePlugin {
+    isAutomatedPublishing = false
+
     plugins {
         create("Mask") {
             id = rootProject.extra["kotlin_plugin_id"] as String
@@ -35,6 +37,16 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
 
+tasks.register("javadocJar", Jar::class) {
+    group = "build"
+    description = "Assembles Kotlin Javadoc"
+
+    val dokkaJavadoc = tasks.javadoc.get()
+    dependsOn(dokkaJavadoc)
+    archiveClassifier.set("javadoc")
+    from(dokkaJavadoc.outputs)
+}
+
 tasks.register("sourcesJar", Jar::class) {
     group = "build"
     description = "Assembles Kotlin sources"
@@ -46,12 +58,13 @@ tasks.register("sourcesJar", Jar::class) {
 
 publishing {
     publications {
-        create<MavenPublication>("default") {
-            groupId = rootProject.extra["GROUP_ID"].toString()
-            artifactId = project.extra["ARTIFACT_ID"].toString()
+        create<MavenPublication>("Maven") {
+            groupId = rootProject.extra["GROUP"].toString()
+            artifactId = project.extra["POM_ARTIFACT_ID"].toString()
             version = rootProject.extra["PLUGIN_VERSION"].toString()
             from(components["java"])
             artifact(tasks["sourcesJar"])
+            artifact(tasks["javadocJar"])
         }
     }
 

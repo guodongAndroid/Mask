@@ -21,6 +21,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -39,8 +47,8 @@ afterEvaluate {
     publishing {
         publications {
             maven(MavenPublication) {
-                groupId = project.GROUP_ID
-                artifactId = project.ARTIFACT_ID
+                groupId = project.GROUP
+                artifactId = project.POM_ARTIFACT_ID
                 version = project.LIB_VERSION
                 from components.release
             }

@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id 'maven-publish'
+//    id 'maven-publish'
 }
 
 java {
@@ -10,14 +10,14 @@ java {
 
 afterEvaluate {
     publishing {
-        publications {
-            maven(MavenPublication) {
-                groupId = project.GROUP_ID
-                artifactId = project.ARTIFACT_ID
-                version = project.PLUGIN_VERSION
-                from components.java
-            }
-        }
+//        publications {
+//            maven(MavenPublication) {
+//                groupId = project.GROUP_ID
+//                artifactId = project.ARTIFACT_ID
+//                version = project.PLUGIN_VERSION
+//                from components.java
+//            }
+//        }
 
         repositories {
             maven {

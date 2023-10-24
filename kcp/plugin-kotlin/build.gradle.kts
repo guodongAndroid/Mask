@@ -5,7 +5,7 @@ plugins {
     kotlin("jvm")
     kotlin("kapt")
     id("com.github.gmazzo.buildconfig")
-    `maven-publish`
+//    `maven-publish`
 }
 
 dependencies {
@@ -34,15 +34,15 @@ tasks.register("sourcesJar", Jar::class) {
 }
 
 publishing {
-    publications {
-        create<MavenPublication>("default") {
-            groupId = rootProject.extra["GROUP_ID"].toString()
-            artifactId = project.extra["ARTIFACT_ID"].toString()
-            version = rootProject.extra["PLUGIN_VERSION"].toString()
-            from(components["java"])
-            artifact(tasks["sourcesJar"])
-        }
-    }
+//    publications {
+//        create<MavenPublication>("default") {
+//            groupId = rootProject.extra["GROUP_ID"].toString()
+//            artifactId = project.extra["ARTIFACT_ID"].toString()
+//            version = rootProject.extra["PLUGIN_VERSION"].toString()
+//            from(components["java"])
+//            artifact(tasks["sourcesJar"])
+//        }
+//    }
 
     repositories {
         maven {
