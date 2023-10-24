@@ -21,27 +21,21 @@ Kotlin项目使用KCP比使用Transform编译会稍微快一些**(没有进行�
 buildscript {
     repositories {
         maven {
-            // 1.Github
-            url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
-            
-            // 2.Gitee
-            url "https://gitee.com/guodongAndroid/maven/raw/main/repository/"
+            mavenCentral()
         }
     }
     dependencies {
         // 1.AGP + Transform - 适用Kotlin/Java
-        classpath "com.guodong.android:mask-gradle-plugin:${version}"
+        classpath "com.sunxiaodou.android:mask-gradle-plugin:${version}"
         
         // 2.Kotlin Compiler Plugin - 仅适用于Kotlin
-        classpath "com.guodong.android:mask-kcp-gradle-plugin:${version}"
+        classpath "com.sunxiaodou.android:mask-kcp-gradle-plugin:${version}"
     }
 }
 
 allprojects {
     repositories {
-        maven {
-            url "https://raw.githubusercontent.com/guodongAndroid/maven/main/repository/"
-        }
+        mavenCentral()
     }
 }
 ```
@@ -55,8 +49,8 @@ plugins {
 }
 
 dependencies {
-    implementation "com.guodong.android:mask-api:${version}" // java
-    implementation "com.guodong.android:mask-api-kt:${version}" // kotlin
+    implementation "com.sunxiaodou.android:mask-api:${version}" // java
+    implementation "com.sunxiaodou.android:mask-api-kt:${version}" // kotlin
 }
 ```
 
