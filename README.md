@@ -32,7 +32,7 @@ buildscript {
         // 1.AGP + Transform - 适用Kotlin/Java
         classpath "com.sunxiaodou.android:mask-gradle-plugin:${version}"
         
-        // 2.Kotlin Compiler Plugin - 仅适用于Kotlin
+        // 2.Kotlin Compiler Plugin - 仅适用于Kotlin - 0.0.6及以下版本
         classpath "com.sunxiaodou.android:mask-kcp-gradle-plugin:${version}"
     }
 }
