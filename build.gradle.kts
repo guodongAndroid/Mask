@@ -40,7 +40,7 @@ allprojects {
 }
 
 subprojects {
-    if (!name.startsWith("lib-")) {
+    if (!name.startsWith("lib-") && name != "app") {
         apply(plugin = "com.vanniktech.maven.publish")
     }
 }
