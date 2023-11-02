@@ -8,38 +8,32 @@ Used to hide Java/Kotlin methods or construction methods in the SDK.
 
 ## 集成
 
-`val version = "0.0.7"`
-
 有两个版本：
 
 1. AGP + Transform - 适用Kotlin/Java
 2. Kotlin Compiler Plugin - 仅适用于Kotlin - **0.0.5及以上版本**
 
-> 📢注意：0.0.7版本开始 KCP 版本的 Plugin Id 更改为 `com.sunxiaodou.android.mask.kcp`
+> 📢注意：
+>
+> 1. 0.0.7 版本开始 KCP 版本的 Plugin Id 更改为 `com.sunxiaodou.android.mask.kcp`，
+> 2. 0.0.8 版本开始 Gradle 版本的 Plugin Id 更改为 `com.sunxiaodou.android.mask`
 
-Kotlin项目使用KCP比使用Transform编译会稍微快一些**(没有进行过具体测试，仅是个人直觉)**
+| Mask  | Gradle PluginId               | KCP PluginId                      | AGP   | Kotlin |
+| ----- | ----------------------------- | --------------------------------- | ----- | ------ |
+| 0.0.8 | `com.sunxiaodou.android.mask` | `com.sunxiaodou.android.mask.kcp` | 7.4.2 | 1.6.21 |
+| 0.0.7 | `com.guodong.android.mask`    | `com.sunxiaodou.android.mask.kcp` | 7.4.2 | 1.6.10 |
+| 0.0.6 | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    | 4.1.3 | 1.6.10 |
+| 0.0.5 | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    | 4.1.3 | 1.6.10 |
 
-### Project level build.gradle
+### Project level build.gradle.kts
 
 ```groovy
-buildscript {
-    repositories {
-        maven {
-            mavenCentral()
-        }
-    }
-    dependencies {
-        // 1.AGP + Transform - 适用Kotlin/Java
-        classpath "com.sunxiaodou.android:mask-gradle-plugin:${version}"
-        
-        // 2.Kotlin Compiler Plugin - 仅适用于Kotlin - 0.0.6及以下版本
-        classpath "com.sunxiaodou.android:mask-kcp-gradle-plugin:${version}"
-    }
-}
-
-// Or 2.Kotlin Compiler Plugin - 仅适用于Kotlin - 0.0.7及以上版本
 plugins {
-    id("com.sunxiaodou.android.mask.kcp") version "${version}" apply false
+    // 1.AGP + Transform - 适用Kotlin/Java
+    id("com.sunxiaodou.android.mask") version "${last-version}" apply false
+    
+    // 2.Kotlin Compiler Plugin
+    id("com.sunxiaodou.android.mask.kcp") version "${last-version}" apply false
 }
 
 allprojects {
@@ -49,19 +43,20 @@ allprojects {
 }
 ```
 
-### Library level build.gradle
+### Library level build.gradle.kts
 
 ```groovy
 plugins {
-    id 'com.guodong.android.mask' // AGP + Transform - 适用Kotlin/Java
-    id 'com.guodong.android.mask.kcp' // KCP - 仅适用于Kotlin, 0.0.6及以下版本
-    // or
-    id 'com.sunxiaodou.android.mask.kcp' // KCP - 仅适用于Kotlin, 0.0.7及以下版本
+    // AGP + Transform - 适用Kotlin/Java
+    id("com.sunxiaodou.android.mask")
+
+    // KCP - 仅适用于Kotlin
+    id("com.sunxiaodou.android.mask.kcp")
 }
 
 dependencies {
-    implementation "com.sunxiaodou.android:mask-api:${version}" // java
-    implementation "com.sunxiaodou.android:mask-api-kt:${version}" // kotlin
+    implementation("com.sunxiaodou.android:mask-api:${last-version}") // java
+    implementation("com.sunxiaodou.android:mask-api-kt:${last-version}") // kotlin
 }
 ```
 
