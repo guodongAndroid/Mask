@@ -1,0 +1,51 @@
+[versions]
+android-gradle-plugin = "7.4.2"
+androidx-core = "1.3.2"
+androidx-appcompat = "1.3.0"
+
+google-android-material = "1.4.0"
+google-auto-service = "1.0.1"
+
+asm = "9.5"
+
+build-config = "3.0.3"
+maven-publish = "0.22.0"
+kotlin = "1.6.21"
+kotlin-android-plugin = "1.6.21"
+
+lib = "0.0.1"
+plugin = "0.0.8-SNAPSHOT"
+
+[libraries]
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+
+google-android-material = { module = "com.google.android.material:material", version.ref = "google-android-material" }
+google-auto-service = { module = "com.google.auto.service:auto-service", version.ref = "google-auto-service" }
+google-auto-service-annotations = { module = "com.google.auto.service:auto-service-annotations", version.ref = "google-auto-service" }
+
+kotlin-compiler-embeddable = { module = "org.jetbrains.kotlin:kotlin-compiler-embeddable", version.ref = "kotlin" }
+
+asm-util = { module = "org.ow2.asm:asm-util", version.ref = "asm" }
+asm = { module = "org.ow2.asm:asm", version.ref = "asm" }
+
+api-java = { group = "com.sunxiaodou.android", name = "mask-api", version.ref = "plugin" }
+api-kotlin = { group = "com.sunxiaodou.android", name = "mask-api-kt", version.ref = "plugin" }
+lib-java = { group = "com.sunxiaodou.android", name = "lib-java", version.ref = "lib" }
+lib-kotlin = { group = "com.sunxiaodou.android", name = "lib-kotlin", version.ref = "lib" }
+
+[plugins]
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-android-plugin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+
+android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
+android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
+build-config = { id = "com.github.gmazzo.buildconfig", version.ref = "build-config" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
+
+mask-gradle = { id = "com.sunxiaodou.android.mask", version.ref = "plugin" }
+mask-kcp = { id = "com.sunxiaodou.android.mask.kcp", version.ref = "plugin" }
+
+[bundles]
+

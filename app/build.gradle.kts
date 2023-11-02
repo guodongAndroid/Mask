@@ -1,6 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+//    id("com.android.application")
+    alias(libs.plugins.android.application)
+//    id("kotlin-android")
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -16,16 +18,28 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("guodongAndroid.jks")
+            storePassword = "33919135"
+            keyAlias = "guodongandroid"
+            keyPassword = "33919135"
+        }
+    }
+
     buildTypes {
         getByName("release") {
+            signingConfig = signingConfigs["release"]
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -33,14 +47,13 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.google.android.material)
 
-    implementation(project(":lib-java"))
-    implementation(project(":lib-kotlin"))
+    debugImplementation(project(":lib-java"))
+    debugImplementation(project(":lib-kotlin"))
 
-//    implementation("com.guodong.android:lib-java:${project.extra["LIB_VERSION"]}")
-//    implementation("com.guodong.android:lib-kotlin:${project.extra["LIB_VERSION"]}")
+    releaseImplementation(libs.lib.java)
+    releaseImplementation(libs.lib.kotlin)
 }

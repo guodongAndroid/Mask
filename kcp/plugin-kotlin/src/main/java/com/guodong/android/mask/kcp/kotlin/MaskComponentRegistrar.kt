@@ -24,7 +24,7 @@ class MaskComponentRegistrar : ComponentRegistrar {
 
         messageCollector.report(
             CompilerMessageSeverity.WARNING,
-            "Welcome to guodongAndroid mask kcp kotlin plugin"
+            "Welcome to guodongAndroid mask kcp kotlin plugin (${BuildConfig.KOTLIN_PLUGIN_VERSION})"
         )
 
         ClassBuilderInterceptorExtension.registerExtension(

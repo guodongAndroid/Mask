@@ -8,13 +8,12 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-afterEvaluate {
-    publishing {
-        repositories {
-            maven {
-                name = "Local"
-                url = uri("../repo")
-            }
+
+publishing {
+    repositories {
+        maven {
+            name = "Local"
+            url = uri("../repo")
         }
     }
 }

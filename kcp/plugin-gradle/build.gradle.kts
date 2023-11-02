@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("java-gradle-plugin")
-    kotlin("jvm")
-    id("com.github.gmazzo.buildconfig")
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.build.config)
 }
 
 dependencies {
@@ -13,17 +13,17 @@ dependencies {
 buildConfig {
     packageName("com.guodong.android.mask.kcp.gradle")
     buildConfigField("String", "KOTLIN_PLUGIN_ID", "\"${rootProject.extra["KOTLIN_PLUGIN_ID"]}\"")
-    buildConfigField("String", "KOTLIN_PLUGIN_GROUP", "\"com.guodong.android\"")
-    buildConfigField("String", "KOTLIN_PLUGIN_NAME", "\"mask-kcp-kotlin-plugin\"")
-    buildConfigField("String", "KOTLIN_PLUGIN_VERSION", "\"${rootProject.extra["PLUGIN_VERSION"]}\"")
+    buildConfigField("String", "KOTLIN_PLUGIN_GROUP", "\"${rootProject.extra["GROUP"]}\"")
+    buildConfigField("String", "KOTLIN_PLUGIN_NAME", "\"${rootProject.subprojects.first { it.name == "plugin-kotlin" }.extra["POM_ARTIFACT_ID"]}\"")
+    buildConfigField("String", "KOTLIN_PLUGIN_VERSION", "\"${rootProject.extra["VERSION_NAME"]}\"")
 }
 
 gradlePlugin {
     plugins {
-        create("Mask") {
+        create("MaskKcpGradlePlugin") {
             id = rootProject.extra["KOTLIN_PLUGIN_ID"] as String
-            displayName = "Mask Kcp"
-            description = "Mask Kcp"
+            displayName = "Mask Kcp Gradle Plugin"
+            description = "Mask Kcp Gradle Plugin"
             implementationClass = "com.guodong.android.mask.kcp.gradle.MaskGradlePlugin"
         }
     }

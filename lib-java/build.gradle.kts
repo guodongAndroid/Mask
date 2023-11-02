@@ -1,7 +1,8 @@
 plugins {
-    id("com.android.library")
+    alias(libs.plugins.android.library)
     id("maven-publish")
-    id("com.guodong.android.mask")
+
+    alias(libs.plugins.mask.gradle)
 }
 
 android {
@@ -36,11 +37,8 @@ android {
 }
 
 dependencies {
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.4.0")
-
     debugImplementation(project(":api-java"))
-    releaseImplementation("com.guodong.android:mask-api:${project.extra["PLUGIN_VERSION"]}")
+    releaseImplementation(libs.api.java)
 }
 
 afterEvaluate {

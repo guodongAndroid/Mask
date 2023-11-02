@@ -1,9 +1,9 @@
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
     id("maven-publish")
-    id("com.sunxiaodou.android.mask.kcp")
+
+    alias(libs.plugins.mask.kcp)
 }
 
 android {
@@ -35,6 +35,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -46,12 +47,12 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.3.0")
-    implementation("com.google.android.material:material:1.4.0")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.google.android.material)
 
     debugImplementation(project(":api-kotlin"))
-    releaseImplementation("com.guodong.android:mask-api-kt:${project.extra["PLUGIN_VERSION"]}")
+    releaseImplementation(libs.api.kotlin)
 }
 
 afterEvaluate {

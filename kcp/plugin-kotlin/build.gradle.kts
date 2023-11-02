@@ -1,21 +1,22 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm")
-    kotlin("kapt")
-    id("com.github.gmazzo.buildconfig")
+    alias(libs.plugins.kotlin.jvm)
+    id(libs.plugins.kotlin.kapt.get().pluginId)
+    alias(libs.plugins.build.config)
 }
 
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable")
+    compileOnly(libs.kotlin.compiler.embeddable)
 
-    kapt("com.google.auto.service:auto-service:1.0.1")
-    compileOnly("com.google.auto.service:auto-service-annotations:1.0.1")
+    kapt(libs.google.auto.service)
+    compileOnly(libs.google.auto.service.annotations)
 }
 
 buildConfig {
     packageName("com.guodong.android.mask.kcp.kotlin")
     buildConfigField("String", "KOTLIN_PLUGIN_ID", "\"${rootProject.extra["KOTLIN_PLUGIN_ID"]}\"")
+    buildConfigField("String", "KOTLIN_PLUGIN_VERSION", "\"${rootProject.extra["VERSION_NAME"]}\"")
 }
 
 tasks.withType<KotlinCompile> {
