@@ -7,8 +7,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 buildConfig {
@@ -21,7 +21,7 @@ dependencies {
 
     implementation(libs.asm)
     implementation(libs.asm.util)
-    compileOnly("com.android.tools.build:gradle:7.2.0") {
+    compileOnly(libs.android.gradle.plugin) {
         exclude(group = "org.ow2.asm")
     }
 }
@@ -38,7 +38,7 @@ gradlePlugin {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }
 
 publishing {

@@ -1,11 +1,10 @@
 package com.guodong.android.mask.plugin
 
-import org.gradle.api.Project
+import org.gradle.api.logging.Logging
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.Opcodes
 import org.objectweb.asm.tree.AnnotationNode
 import org.objectweb.asm.tree.ClassNode
-import org.slf4j.LoggerFactory
 
 /**
  * Created by guodongAndroid on 2022/1/26.
@@ -28,7 +27,7 @@ class MaskClassNode(
         this.cv = visitor
     }
 
-    private val logger = LoggerFactory.getLogger(MaskClassNode::class.java)
+    private val logger = Logging.getLogger(MaskClassNode::class.java)
 
     override fun visitEnd() {
         // 处理Field

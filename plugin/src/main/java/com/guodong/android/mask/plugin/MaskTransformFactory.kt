@@ -17,7 +17,8 @@ abstract class MaskTransformFactory : AsmClassVisitorFactory<InstrumentationPara
         nextClassVisitor: ClassVisitor
     ): ClassVisitor {
         val cv = CheckClassAdapter(nextClassVisitor)
-        return MaskClassNode(instrumentationContext.apiVersion.get(), cv)
+        val asmApi = instrumentationContext.apiVersion.get()
+        return MaskClassNode(asmApi, cv)
     }
 
     override fun isInstrumentable(classData: ClassData): Boolean {
