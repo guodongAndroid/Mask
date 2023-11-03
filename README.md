@@ -18,22 +18,22 @@ Used to hide Java/Kotlin methods or construction methods in the SDK.
 > 1. 0.0.7 版本开始 KCP 版本的 Plugin Id 更改为 `com.sunxiaodou.android.mask.kcp`，
 > 2. 0.0.8 版本开始 Gradle 版本的 Plugin Id 更改为 `com.sunxiaodou.android.mask`
 
-| Mask  | Gradle PluginId               | KCP PluginId                      | AGP   | Kotlin |
-| ----- | ----------------------------- | --------------------------------- | ----- | ------ |
-| 0.0.8 | `com.sunxiaodou.android.mask` | `com.sunxiaodou.android.mask.kcp` | 7.4.2 | 1.6.21 |
-| 0.0.7 | `com.guodong.android.mask`    | `com.sunxiaodou.android.mask.kcp` | 7.4.2 | 1.6.10 |
-| 0.0.6 | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    | 4.1.3 | 1.6.10 |
-| 0.0.5 | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    | 4.1.3 | 1.6.10 |
+| AGP   | Kotlin | Mask  | Gradle PluginId               | KCP PluginId                      |
+| ----- | ------ | ----- | ----------------------------- | --------------------------------- |
+| 7.4.2 | 1.6.21 | 0.0.8 | `com.sunxiaodou.android.mask` | `com.sunxiaodou.android.mask.kcp` |
+| 7.4.2 | 1.6.10 | 0.0.7 | `com.guodong.android.mask`    | `com.sunxiaodou.android.mask.kcp` |
+| 4.1.3 | 1.6.10 | 0.0.6 | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    |
+| 4.1.3 | 1.6.10 | 0.0.5 | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    |
 
 ### Project level build.gradle.kts
 
-```groovy
+```kotlin
 plugins {
     // 1.AGP + Transform - 适用Kotlin/Java
-    id("com.sunxiaodou.android.mask") version "${last-version}" apply false
+    id("com.sunxiaodou.android.mask") version "${latest-version}" apply false
     
     // 2.Kotlin Compiler Plugin
-    id("com.sunxiaodou.android.mask.kcp") version "${last-version}" apply false
+    id("com.sunxiaodou.android.mask.kcp") version "${latest-version}" apply false
 }
 
 allprojects {
@@ -45,7 +45,7 @@ allprojects {
 
 ### Library level build.gradle.kts
 
-```groovy
+```kotlin
 plugins {
     // AGP + Transform - 适用Kotlin/Java
     id("com.sunxiaodou.android.mask")
@@ -55,8 +55,11 @@ plugins {
 }
 
 dependencies {
-    implementation("com.sunxiaodou.android:mask-api:${last-version}") // java
-    implementation("com.sunxiaodou.android:mask-api-kt:${last-version}") // kotlin
+    // java
+    implementation("com.sunxiaodou.android:mask-api:${latest-version}")
+    
+    // kotlin
+    implementation("com.sunxiaodou.android:mask-api-kt:${latest-version}")
 }
 ```
 
