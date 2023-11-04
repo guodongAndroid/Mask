@@ -51,8 +51,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.google.android.material)
 
-    debugImplementation(project(":lib-java"))
-    debugImplementation(project(":lib-kotlin"))
+    debugImplementation(project(":lib:lib-java"))
+    debugImplementation(project(":lib:lib-kotlin"))
 
     releaseImplementation(libs.lib.java)
     releaseImplementation(libs.lib.kotlin)

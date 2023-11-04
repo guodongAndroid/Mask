@@ -34,9 +34,9 @@ class MaskClassNode(
         for (fn in fields) {
             val has = hasHideAnnotation(fn.invisibleAnnotations)
             if (has) {
-                logger.info("$TAG, before --> typeName = $name, fieldName = ${fn.name}, access = ${fn.access}")
+                logger.error("$TAG, before --> typeName = $name, fieldName = ${fn.name}, access = ${fn.access}")
                 fn.access += Opcodes.ACC_SYNTHETIC
-                logger.info("$TAG, after --> typeName = $name, fieldName = ${fn.name}, access = ${fn.access}")
+                logger.error("$TAG, after --> typeName = $name, fieldName = ${fn.name}, access = ${fn.access}")
             }
         }
 
@@ -44,9 +44,9 @@ class MaskClassNode(
         for (mn in methods) {
             val has = hasHideAnnotation(mn.invisibleAnnotations)
             if (has) {
-                logger.info("$TAG, before --> typeName = $name, methodName = ${mn.name}, access = ${mn.access}")
+                logger.error("$TAG, before --> typeName = $name, methodName = ${mn.name}, access = ${mn.access}")
                 mn.access += Opcodes.ACC_SYNTHETIC
-                logger.info("$TAG, after --> typeName = $name, methodName = ${mn.name}, access = ${mn.access}")
+                logger.error("$TAG, after --> typeName = $name, methodName = ${mn.name}, access = ${mn.access}")
             }
         }
 

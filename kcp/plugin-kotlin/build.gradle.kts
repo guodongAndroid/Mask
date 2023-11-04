@@ -11,6 +11,10 @@ dependencies {
 
     kapt(libs.google.auto.service)
     compileOnly(libs.google.auto.service.annotations)
+
+    testImplementation(project(":api:api-kotlin"))
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.kotlin.compile.testing)
 }
 
 buildConfig {

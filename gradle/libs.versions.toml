@@ -12,9 +12,10 @@ build-config = "3.0.3"
 maven-publish = "0.22.0"
 kotlin = "1.6.21"
 kotlin-android-plugin = "1.6.21"
+kotlin-compile-test = "1.4.8"
 
 lib = "0.0.1"
-plugin = "0.0.8"
+plugin = "0.0.9-SNAPSHOT"
 
 [libraries]
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
@@ -27,6 +28,8 @@ google-auto-service = { module = "com.google.auto.service:auto-service", version
 google-auto-service-annotations = { module = "com.google.auto.service:auto-service-annotations", version.ref = "google-auto-service" }
 
 kotlin-compiler-embeddable = { module = "org.jetbrains.kotlin:kotlin-compiler-embeddable", version.ref = "kotlin" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+kotlin-compile-testing = { module = "com.github.tschuchortdev:kotlin-compile-testing", version.ref = "kotlin-compile-test" }
 
 asm-util = { module = "org.ow2.asm:asm-util", version.ref = "asm" }
 asm = { module = "org.ow2.asm:asm", version.ref = "asm" }
