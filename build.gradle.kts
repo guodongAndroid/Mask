@@ -40,9 +40,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        flatDir {
-            dirs("repo")
-        }
         maven(uri(rootProject.uri("repo")))
     }
 }
