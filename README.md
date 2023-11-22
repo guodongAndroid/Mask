@@ -20,6 +20,7 @@ Used to hide Java/Kotlin methods or construction methods in the SDK.
 
 | AGP   | Kotlin | Mask  | Gradle PluginId               | KCP PluginId                      |
 | ----- | ------ | ----- | ----------------------------- | --------------------------------- |
+| 7.4.2 | 1.7.22 | 0.0.9 | `com.sunxiaodou.android.mask` | `com.sunxiaodou.android.mask.kcp` |
 | 7.4.2 | 1.6.21 | 0.0.8 | `com.sunxiaodou.android.mask` | `com.sunxiaodou.android.mask.kcp` |
 | 7.4.2 | 1.6.10 | 0.0.7 | `com.guodong.android.mask`    | `com.sunxiaodou.android.mask.kcp` |
 | 4.1.3 | 1.6.10 | 0.0.6 | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    |
@@ -30,10 +31,10 @@ Used to hide Java/Kotlin methods or construction methods in the SDK.
 ```kotlin
 plugins {
     // 1.AGP + Transform - 适用Kotlin/Java
-    id("com.sunxiaodou.android.mask") version "${latest-version}" apply false
+    id("com.sunxiaodou.android.mask") version "<latest-version>" apply false
     
     // 2.Kotlin Compiler Plugin
-    id("com.sunxiaodou.android.mask.kcp") version "${latest-version}" apply false
+    id("com.sunxiaodou.android.mask.kcp") version "<latest-version>" apply false
 }
 
 allprojects {
@@ -56,10 +57,10 @@ plugins {
 
 dependencies {
     // java
-    implementation("com.sunxiaodou.android:mask-api:${latest-version}")
+    implementation("com.sunxiaodou.android:mask-api:<latest-version>")
     
     // kotlin
-    implementation("com.sunxiaodou.android:mask-api-kt:${latest-version}")
+    implementation("com.sunxiaodou.android:mask-api-kt:<latest-version>")
 }
 ```
 
