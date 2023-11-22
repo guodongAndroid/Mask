@@ -10,9 +10,9 @@ asm = "9.5"
 
 build-config = "3.0.3"
 maven-publish = "0.22.0"
-kotlin = "1.7.22"
-kotlin-android-plugin = "1.7.22"
-kotlin-compile-test = "1.4.9"
+kotlin = "1.8.22"
+kotlin-android-plugin = "1.8.22"
+kotlin-compile-test = "1.5.0"
 
 lib = "0.0.1"
 plugin = "0.0.9-SNAPSHOT"

@@ -5,20 +5,18 @@ import org.jetbrains.kotlin.cli.common.CLIConfigurationKeys
 import org.jetbrains.kotlin.cli.common.messages.CompilerMessageSeverity
 import org.jetbrains.kotlin.cli.common.messages.MessageCollector
 import org.jetbrains.kotlin.codegen.extensions.ClassBuilderInterceptorExtension
-import org.jetbrains.kotlin.com.intellij.mock.MockProject
-import org.jetbrains.kotlin.compiler.plugin.ComponentRegistrar
+import org.jetbrains.kotlin.compiler.plugin.CompilerPluginRegistrar
 import org.jetbrains.kotlin.config.CompilerConfiguration
 
 /**
  * Created by guodongAndroid on 2022/5/7.
  */
-@AutoService(ComponentRegistrar::class)
-class MaskComponentRegistrar : ComponentRegistrar {
+@AutoService(CompilerPluginRegistrar::class)
+class MaskCompilerPluginRegistrar : CompilerPluginRegistrar() {
 
-    override fun registerProjectComponents(
-        project: MockProject,
-        configuration: CompilerConfiguration
-    ) {
+    override val supportsK2: Boolean = true
+
+    override fun ExtensionStorage.registerExtensions(configuration: CompilerConfiguration) {
         val messageCollector =
             configuration.get(CLIConfigurationKeys.MESSAGE_COLLECTOR_KEY, MessageCollector.NONE)
 
@@ -28,7 +26,6 @@ class MaskComponentRegistrar : ComponentRegistrar {
         )
 
         ClassBuilderInterceptorExtension.registerExtension(
-            project,
             MaskClassGenerationInterceptor(messageCollector)
         )
     }

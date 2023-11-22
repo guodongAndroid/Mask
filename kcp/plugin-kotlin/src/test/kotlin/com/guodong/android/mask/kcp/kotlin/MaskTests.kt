@@ -2,6 +2,7 @@ package com.guodong.android.mask.kcp.kotlin
 
 import com.tschuchort.compiletesting.KotlinCompilation
 import com.tschuchort.compiletesting.SourceFile
+import org.jetbrains.kotlin.compiler.plugin.CompilerPluginRegistrar
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -25,11 +26,7 @@ class MaskTests {
             """.trimIndent()
         )
 
-        val testSourceResult = KotlinCompilation().apply {
-            sources = listOf(testSource)
-            compilerPlugins = listOf(MaskComponentRegistrar())
-            inheritClassPath = true
-        }.compile()
+        val testSourceResult = compile(testSource)
 
         assertEquals(KotlinCompilation.ExitCode.OK, testSourceResult.exitCode)
 
@@ -57,11 +54,7 @@ class MaskTests {
             """.trimIndent()
         )
 
-        val testSourceResult = KotlinCompilation().apply {
-            sources = listOf(testSource)
-            compilerPlugins = listOf(MaskComponentRegistrar())
-            inheritClassPath = true
-        }.compile()
+        val testSourceResult = compile(testSource)
 
         assertEquals(KotlinCompilation.ExitCode.OK, testSourceResult.exitCode)
 
@@ -91,16 +84,21 @@ class MaskTests {
             """.trimIndent()
         )
 
-        val testSourceResult = KotlinCompilation().apply {
-            sources = listOf(testSource)
-            compilerPlugins = listOf(MaskComponentRegistrar())
-            inheritClassPath = true
-        }.compile()
+        val testSourceResult = compile(testSource)
 
         assertEquals(KotlinCompilation.ExitCode.OK, testSourceResult.exitCode)
 
         val clazzTest = testSourceResult.classLoader.loadClass("Test")
         assertEquals(true, clazzTest.getDeclaredMethod("hide").isSynthetic)
         assertEquals(false, clazzTest.getDeclaredMethod("show").isSynthetic)
+    }
+
+    private fun compile(vararg sources: SourceFile, block: KotlinCompilation.() -> Unit = {}): KotlinCompilation.Result {
+        return KotlinCompilation().apply {
+            this.sources = sources.toList()
+            this.compilerPluginRegistrars = listOf(MaskCompilerPluginRegistrar())
+            this.inheritClassPath = true
+            this.block()
+        }.compile()
     }
 }
