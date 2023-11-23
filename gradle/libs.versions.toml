@@ -1,9 +1,9 @@
 [versions]
 android-gradle-plugin = "7.4.2"
-androidx-core = "1.3.2"
-androidx-appcompat = "1.3.0"
+androidx-core = "1.7.0"
+androidx-appcompat = "1.4.1"
 
-google-android-material = "1.4.0"
+google-android-material = "1.6.0"
 google-auto-service = "1.0.1"
 
 asm = "9.5"
@@ -15,7 +15,7 @@ kotlin-android-plugin = "1.8.22"
 kotlin-compile-test = "1.5.0"
 
 lib = "0.0.1"
-plugin = "0.0.9-SNAPSHOT"
+plugin = "0.0.10-SNAPSHOT"
 
 [libraries]
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "android-gradle-plugin" }
