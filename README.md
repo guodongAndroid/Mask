@@ -1,6 +1,6 @@
 # Mask
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%20License%202.0-yellow.svg)](./LICENSE.txt) [![Maven Central](https://img.shields.io/maven-central/v/com.sunxiaodou.android/mask-kcp-gradle-plugin)](https://central.sonatype.com/artifact/com.sunxiaodou.android/mask-kcp-gradle-plugin)
+[![License: Apache 2.0](https://img.shields.io/github/license/guodongAndroid/mask?color=yellow)](./LICENSE.txt) [![Maven Central](https://img.shields.io/maven-central/v/com.sunxiaodou.android/mask-kcp-gradle-plugin)](https://central.sonatype.com/artifact/com.sunxiaodou.android/mask-kcp-gradle-plugin)
 
 Used to hide Java/Kotlin methods or construction methods in the SDK.
 
