@@ -1,18 +1,20 @@
 [versions]
+java = "11"
+
 android-gradle-plugin = "7.4.2"
 androidx-core = "1.7.0"
 androidx-appcompat = "1.4.1"
 
 google-android-material = "1.6.0"
-google-auto-service = "1.0.1"
+google-auto-service = "1.1.1"
 
 asm = "9.5"
 
 build-config = "3.0.3"
-maven-publish = "0.22.0"
-kotlin = "1.8.22"
-kotlin-android-plugin = "1.8.22"
-kotlin-compile-test = "1.5.0"
+maven-publish = "0.25.3"
+kotlin = "1.9.20"
+kotlin-android-plugin = "1.9.20"
+kotlin-compile-test = "0.4.0"
 
 gradle-plugin-publish = "1.2.1"
 
@@ -31,7 +33,7 @@ google-auto-service-annotations = { module = "com.google.auto.service:auto-servi
 
 kotlin-compiler-embeddable = { module = "org.jetbrains.kotlin:kotlin-compiler-embeddable", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
-kotlin-compile-testing = { module = "com.github.tschuchortdev:kotlin-compile-testing", version.ref = "kotlin-compile-test" }
+kotlin-compile-testing = { module = "dev.zacsweers.kctfork:core", version.ref = "kotlin-compile-test" }
 
 asm-util = { module = "org.ow2.asm:asm-util", version.ref = "asm" }
 asm = { module = "org.ow2.asm:asm", version.ref = "asm" }

@@ -1,8 +1,8 @@
 package com.guodong.android.mask.kcp.kotlin
 
+import com.tschuchort.compiletesting.JvmCompilationResult
 import com.tschuchort.compiletesting.KotlinCompilation
 import com.tschuchort.compiletesting.SourceFile
-import org.jetbrains.kotlin.compiler.plugin.CompilerPluginRegistrar
 import org.junit.Test
 import kotlin.test.assertEquals
 
@@ -93,7 +93,7 @@ class MaskTests {
         assertEquals(false, clazzTest.getDeclaredMethod("show").isSynthetic)
     }
 
-    private fun compile(vararg sources: SourceFile, block: KotlinCompilation.() -> Unit = {}): KotlinCompilation.Result {
+    private fun compile(vararg sources: SourceFile, block: KotlinCompilation.() -> Unit = {}): JvmCompilationResult {
         return KotlinCompilation().apply {
             this.sources = sources.toList()
             this.compilerPluginRegistrars = listOf(MaskCompilerPluginRegistrar())

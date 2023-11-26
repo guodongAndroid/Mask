@@ -1,10 +1,10 @@
 package com.guodong.android.mask.kcp.kotlin
 
 import com.google.auto.service.AutoService
+import org.jetbrains.kotlin.backend.jvm.extensions.ClassGeneratorExtension
 import org.jetbrains.kotlin.cli.common.CLIConfigurationKeys
 import org.jetbrains.kotlin.cli.common.messages.CompilerMessageSeverity
 import org.jetbrains.kotlin.cli.common.messages.MessageCollector
-import org.jetbrains.kotlin.codegen.extensions.ClassBuilderInterceptorExtension
 import org.jetbrains.kotlin.compiler.plugin.CompilerPluginRegistrar
 import org.jetbrains.kotlin.config.CompilerConfiguration
 
@@ -25,8 +25,8 @@ class MaskCompilerPluginRegistrar : CompilerPluginRegistrar() {
             "Welcome to guodongAndroid mask kcp kotlin plugin (${BuildConfig.KOTLIN_PLUGIN_VERSION})"
         )
 
-        ClassBuilderInterceptorExtension.registerExtension(
-            MaskClassGenerationInterceptor(messageCollector)
+        ClassGeneratorExtension.registerExtension(
+            MaskClassGenerationExtension(messageCollector)
         )
     }
 }
