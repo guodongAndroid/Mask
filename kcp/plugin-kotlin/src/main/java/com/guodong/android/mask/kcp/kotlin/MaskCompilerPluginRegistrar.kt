@@ -25,8 +25,6 @@ class MaskCompilerPluginRegistrar : CompilerPluginRegistrar() {
             "Welcome to guodongAndroid mask kcp kotlin plugin (${BuildConfig.KOTLIN_PLUGIN_VERSION})"
         )
 
-        ClassGeneratorExtension.registerExtension(
-            MaskClassGenerationExtension(messageCollector)
-        )
+        ClassGeneratorExtension.registerExtension(MaskClassGeneratorExtension(messageCollector))
     }
 }

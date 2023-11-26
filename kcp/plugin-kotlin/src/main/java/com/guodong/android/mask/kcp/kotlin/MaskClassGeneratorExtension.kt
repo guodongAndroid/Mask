@@ -8,7 +8,7 @@ import org.jetbrains.kotlin.ir.declarations.IrClass
 /**
  * Created by guodongAndroid on 2022/5/7.
  */
-class MaskClassGenerationExtension(
+class MaskClassGeneratorExtension(
     private val messageCollector: MessageCollector,
 ) : ClassGeneratorExtension {
 
