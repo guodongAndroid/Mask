@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.utils.addToStdlib.cast
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 //buildscript {
 //    repositories {
@@ -51,5 +49,5 @@ subprojects {
 }
 
 tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+    delete(rootProject.layout.buildDirectory)
 }
