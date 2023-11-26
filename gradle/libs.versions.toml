@@ -14,6 +14,8 @@ kotlin = "1.8.22"
 kotlin-android-plugin = "1.8.22"
 kotlin-compile-test = "1.5.0"
 
+gradle-plugin-publish = "1.2.1"
+
 lib = "0.0.1"
 plugin = "0.0.10-SNAPSHOT"
 
@@ -43,6 +45,8 @@ lib-kotlin = { group = "com.sunxiaodou.android", name = "lib-kotlin", version.re
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-android-plugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+
+gradle-plugin-publish = { id = "com.gradle.plugin-publish", version.ref = "gradle-plugin-publish" }
 
 android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
 android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }

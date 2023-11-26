@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("java-gradle-plugin")
+    alias(libs.plugins.gradle.plugin.publish)
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.build.config)
 }
@@ -28,11 +28,15 @@ dependencies {
 
 gradlePlugin {
     plugins {
+        vcsUrl.set("https://github.com/guodongAndroid/Mask")
+        website.set(vcsUrl)
+
         create("MaskGradlePlugin") {
             id = rootProject.extra["GRADLE_PLUGIN_ID"] as String
             displayName = "Mask Gradle Plugin"
             description = "Mask Gradle Plugin"
             implementationClass = "com.guodong.android.mask.plugin.MaskPlugin"
+            tags.addAll("mask", "java", "kotlin")
         }
     }
 }

@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("java-gradle-plugin")
+    alias(libs.plugins.gradle.plugin.publish)
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.build.config)
 }
@@ -20,11 +20,15 @@ buildConfig {
 
 gradlePlugin {
     plugins {
+        vcsUrl.set("https://github.com/guodongAndroid/Mask")
+        website.set(vcsUrl)
+
         create("MaskKcpGradlePlugin") {
             id = rootProject.extra["KOTLIN_PLUGIN_ID"] as String
             displayName = "Mask Kcp Gradle Plugin"
             description = "Mask Kcp Gradle Plugin"
             implementationClass = "com.guodong.android.mask.kcp.gradle.MaskGradlePlugin"
+            tags.addAll("mask", "kotlin", "kcp")
         }
     }
 }
