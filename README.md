@@ -18,13 +18,14 @@ Used to hide Java/Kotlin methods or construction methods in the SDK.
 > 1. 0.0.7 版本开始 KCP 版本的 Plugin Id 更改为 `com.sunxiaodou.android.mask.kcp`，
 > 2. 0.0.8 版本开始 Gradle 版本的 Plugin Id 更改为 `com.sunxiaodou.android.mask`
 
-| AGP   | Kotlin | Mask  | Gradle PluginId               | KCP PluginId                      |
-| ----- | ------ | ----- | ----------------------------- | --------------------------------- |
-| 7.4.2 | 1.7.22 | 0.0.9 | `com.sunxiaodou.android.mask` | `com.sunxiaodou.android.mask.kcp` |
-| 7.4.2 | 1.6.21 | 0.0.8 | `com.sunxiaodou.android.mask` | `com.sunxiaodou.android.mask.kcp` |
-| 7.4.2 | 1.6.10 | 0.0.7 | `com.guodong.android.mask`    | `com.sunxiaodou.android.mask.kcp` |
-| 4.1.3 | 1.6.10 | 0.0.6 | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    |
-| 4.1.3 | 1.6.10 | 0.0.5 | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    |
+| AGP   | Kotlin | Mask   | Gradle PluginId               | KCP PluginId                      |
+| ----- | ------ | ------ | ----------------------------- | --------------------------------- |
+| 7.4.2 | 1.9.21 | 0.0.10 | `com.sunxiaodou.android.mask` | `com.sunxiaodou.android.mask.kcp` |
+| 7.4.2 | 1.7.22 | 0.0.9  | `com.sunxiaodou.android.mask` | `com.sunxiaodou.android.mask.kcp` |
+| 7.4.2 | 1.6.21 | 0.0.8  | `com.sunxiaodou.android.mask` | `com.sunxiaodou.android.mask.kcp` |
+| 7.4.2 | 1.6.10 | 0.0.7  | `com.guodong.android.mask`    | `com.sunxiaodou.android.mask.kcp` |
+| 4.1.3 | 1.6.10 | 0.0.6  | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    |
+| 4.1.3 | 1.6.10 | 0.0.5  | `com.guodong.android.mask`    | `com.guodong.android.mask.kcp`    |
 
 ### Project level build.gradle.kts
 
