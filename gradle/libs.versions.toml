@@ -12,8 +12,7 @@ asm = "9.5"
 
 build-config = "3.0.3"
 maven-publish = "0.25.3"
-kotlin = "1.9.20"
-kotlin-android-plugin = "1.9.20"
+kotlin = "1.9.21"
 kotlin-compile-test = "0.4.0"
 
 gradle-plugin-publish = "1.2.1"
@@ -44,7 +43,7 @@ lib-java = { group = "com.sunxiaodou.android", name = "lib-java", version.ref = 
 lib-kotlin = { group = "com.sunxiaodou.android", name = "lib-kotlin", version.ref = "lib" }
 
 [plugins]
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin-android-plugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 
